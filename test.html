@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>User Agent Test Page</title>
+<script type='text/javascript' src='mobile-useragent-info.js'></script>
+<script type='text/javascript' src='test.js'></script>
+</head>
+<body>
+<h1>JavaScript User Agent Detection Library - Test Page</h1>
+<span>Put the User Agent String you want to test in the TextArea below and hit Run Test</span><br/>
+<TEXTAREA id="ua-string-area" rows="3" cols="100"></TEXTAREA>
+<br />
+<button onclick="runTest('test-results'); return false;">Run Test</button>
+<button onclick="clean('test-results'); return false;">Clean</button>
+<br />
+<br />
+Test your browser User Agent 
+<button onclick="runBrowserTest('test-results'); return false;">Test Your browser</button>
+<br />
+You can run automated tests agaist a prefilled set of UAs by hitting the Run Automated Tests button: 
+<button onclick="runAutomatedTests('test-results'); return false;">Run Automated Tests</button>
+
+ 
+<div id="test-results" style="margin: 20px;">
+</div>
+</body>
+</html>
