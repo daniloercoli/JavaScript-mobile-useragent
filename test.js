@@ -274,6 +274,13 @@ myTests.push( {
 	useragent : "firefox_mobile",
 	});
 
+//FireFoxOS
+myTests.push( {
+	test_name : "FirefoxOS",
+	user_agent_string : "Mozilla/5.0 (Mobile; rv:14.0) Gecko/14.0 Firefox/14.0",
+	platform :  "firefoxOS",
+	useragent : "firefoxOS",
+	});
 
 //Nokia
 myTests.push( {

@@ -11,6 +11,7 @@ var wpcom_mobile_user_agent_info = {
 		PLATFORM_J2ME_MIDP : 'j2me_midp',
 		PLATFORM_ANDROID : 'android',
 		PLATFORM_ANDROID_TABLET : 'android_tablet',
+		PLATFORM_FIREFOX_OS : 'firefoxOS',
 		PLATFORM_MOBILE_GENERIC : 'mobile_generic',
 
 		userAgent : false, //Shortcut to the browser User Agent String
@@ -91,6 +92,8 @@ var wpcom_mobile_user_agent_info = {
 				t.matchedUserAgentName = 'series60';
 			else if( t.isFirefoxMobile() )
 				t.matchedUserAgentName = 'firefox_mobile';
+			else if( t.isFirefoxOS() )
+				t.matchedUserAgentName = 'firefoxOS';
 			else if( t.isFacebookForIphone() )
 				t.matchedUserAgentName = 'facebook-for-iphone';
 			else if( t.isFacebookForIpad() )
@@ -140,6 +143,8 @@ var wpcom_mobile_user_agent_info = {
 				t.matchedPlatformName = t.PLATFORM_SYMBIAN_S40;
 			} else if( t.isJ2MEPlatform() ) {
 				t.matchedPlatformName = t.PLATFORM_J2ME_MIDP;
+			} else if (t.isFirefoxOS()) {			
+				t.matchedPlatformName = t.PLATFORM_FIREFOX_OS;
 			} else if (t.isFirefoxMobile()) {			
 				t.matchedPlatformName = t.PLATFORM_MOBILE_GENERIC;
 			}
@@ -434,6 +439,26 @@ var wpcom_mobile_user_agent_info = {
 
 			return false;
 		},
+		
+		
+		/**
+		 * Detects if the current browser is the native FirefoxOS browser
+		 * 
+		 * Mozilla/5.0 (Mobile; rv:14.0) Gecko/14.0 Firefox/14.0
+		 * 
+		 */
+		isFirefoxOS : function() {
+			var t = this;
+		
+			if ( false === t.userAgent )
+				return false;
+			
+			if ( t.userAgent.indexOf('mozilla') != -1 && t.userAgent.indexOf('mobile') != -1 && t.userAgent.indexOf('gecko') != -1 &&  t.userAgent.indexOf('firefox') != -1 )
+				return true;
+
+			return false;
+		},
+		
 		
 		/**
 		 * Detects if the current UA is Facebook for iPad
