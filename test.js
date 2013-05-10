@@ -108,9 +108,6 @@ myTests.push( {
 		useragent : false,
 		});
 
-
-//Chrome Mobile
-
 //Mobile Chrome
 myTests.push( {
 	test_name : "Chrome for Android - phone",
