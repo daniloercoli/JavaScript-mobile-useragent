@@ -147,12 +147,6 @@ myTests.push( {
 
 //iPhone
 myTests.push( {
-		test_name : "Facebook for iphone",
-		user_agent_string : "Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 [FBAN/FBIOS;FBAV/5.0;FBBV/47423;FBDV/iPhone3,1;FBMD/iPhone;FBSN/iPhone OS;FBSV/5.1.1;FBSS/2; FBCR/3ITA;FBID/phone;FBLC/en_US]",
-		platform : "iphone",
-		useragent : "facebook-for-iphone",
-		});
-myTests.push( {
 		test_name : "iPhone iOS 3.0",
 		user_agent_string : "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
 		platform : "iphone",
@@ -171,7 +165,19 @@ myTests.push( {
 		useragent : "ipad",
 		});
 
-//Twitter - iOS
+//iOS - Apps
+myTests.push( {
+	test_name : "WordPress for iphone",
+	user_agent_string : "wp-iphone/3.5.3 (iPhone OS 5.1, iPhone Simulator) Mobile",
+	platform : "iphone",
+	useragent : "ios-app",
+});
+myTests.push( {
+	test_name : "Facebook for iphone",
+	user_agent_string : "Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 [FBAN/FBIOS;FBAV/5.0;FBBV/47423;FBDV/iPhone3,1;FBMD/iPhone;FBSN/iPhone OS;FBSV/5.1.1;FBSS/2; FBCR/3ITA;FBID/phone;FBLC/en_US]",
+	platform : "iphone",
+	useragent : "facebook-for-iphone",
+});
 myTests.push( {
 	test_name : "Twitter for iPhone",
 	user_agent_string : 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_5 like Mac OS X; nb-no) AppleWebKit/533.17.9 (KHTML, like Gecko) Mobile/8L1 Twitter for iPhone',
