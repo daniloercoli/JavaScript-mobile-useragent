@@ -171,6 +171,26 @@ myTests.push( {
 		useragent : "ipad",
 		});
 
+//Twitter - iOS
+myTests.push( {
+	test_name : "Twitter for iPhone",
+	user_agent_string : 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_5 like Mac OS X; nb-no) AppleWebKit/533.17.9 (KHTML, like Gecko) Mobile/8L1 Twitter for iPhone',
+	platform : "iphone",
+	useragent : "twitter-for-iphone",
+	});
+myTests.push( {
+	test_name : 'Twitter for iPad - v4.X',
+	user_agent_string : "Mozilla/5.0 (iPad; U; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Mobile/8L1 Twitter for iPad",
+	platform : "ipad",
+	useragent : "twitter-for-ipad",
+	});
+myTests.push( {
+	test_name : 'Twitter for iPad - v5.0 or higher',
+	user_agent_string : 'Mozilla/5.0 (iPad; CPU OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 Twitter for iPhone',
+	platform : "ipad",
+	useragent : 'twitter-for-ipad',
+	});
+
 //BlackBerry
 myTests.push( {
 	test_name : "BlackBerry OS 6.0.0.546",

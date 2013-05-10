@@ -59,6 +59,10 @@ var wpcom_mobile_user_agent_info = {
 
 			if( t.isChromeForIOS() )
 				t.matchedUserAgentName = 'chrome-for-ios';
+			else if( t.isTwitterForIpad() )
+				t.matchedUserAgentName =  'twitter-for-ipad';
+			else if( t.isTwitterForIphone() )
+				t.matchedUserAgentName =  'twitter-for-iphone';
 			else if( t.isIPhoneOrIPod() ) 
 				t.matchedUserAgentName = 'iphone';
 			else if ( t.isIPad() )
@@ -91,6 +95,8 @@ var wpcom_mobile_user_agent_info = {
 				t.matchedUserAgentName = 'facebook-for-iphone';
 			else if( t.isFacebookForIpad() )
 				t.matchedUserAgentName = 'facebook-for-ipad';
+			else if( t.isWordPressForIos())
+				t.matchedUserAgentName = 'ios-app';
 			else if( t.userAgent.indexOf('iphone') != -1 )
 				t.matchedUserAgentName = 'iphone-unknown';
 			else if( t.userAgent.indexOf('ipad') != -1 )
@@ -411,6 +417,25 @@ var wpcom_mobile_user_agent_info = {
 		},
 		
 		/**
+		 * Detects if the current browser is Firefox Mobile (Fennec)
+		 *
+		 * http://www.userAgentstring.com/pages/Fennec/
+		 * Mozilla/5.0 (Windows NT 6.1; WOW64; rv:2.1.1) Gecko/20110415 Firefox/4.0.2pre Fennec/4.0.1
+		 * Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1b2pre) Gecko/20081015 Fennec/1.0a1
+		 */
+		isFirefoxMobile : function() {
+			var t = this;
+		
+			if ( false === t.userAgent )
+				return false;
+			
+			if ( t.userAgent.indexOf('fennec') != -1 )
+				return true;
+
+			return false;
+		},
+		
+		/**
 		 * Detects if the current UA is Facebook for iPad
 		 * - Facebook 4020.0 (iPad; iPhone OS 5.0.1; en_US)
 		 * - Mozilla/5.0 (iPad; U; CPU iPhone OS 5_0 like Mac OS X; en_US) AppleWebKit (KHTML, like Gecko) Mobile [FBAN/FBForIPhone;FBAV/4.0.2;FBBV/4020.0;FBDV/iPad2,1;FBMD/iPad;FBSN/iPhone OS;FBSV/5.0;FBSS/1; FBCR/;FBID/tablet;FBLC/en_US;FBSF/1.0]
@@ -457,19 +482,58 @@ var wpcom_mobile_user_agent_info = {
 		},
 		
 		/**
-		 * Detects if the current browser is Firefox Mobile (Fennec)
-		 *
-		 * http://www.userAgentstring.com/pages/Fennec/
-		 * Mozilla/5.0 (Windows NT 6.1; WOW64; rv:2.1.1) Gecko/20110415 Firefox/4.0.2pre Fennec/4.0.1
-		 * Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1b2pre) Gecko/20081015 Fennec/1.0a1
+		 *  Detects if the current UA is Twitter for iPhone
+		 *  
+		 * Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_5 like Mac OS X; nb-no) AppleWebKit/533.17.9 (KHTML, like Gecko) Mobile/8L1 Twitter for iPhone
+		 * Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 Twitter for iPhone
 		 */
-		isFirefoxMobile : function() {
+		isTwitterForIphone : function() {
 			var t = this;
-		
+			
 			if ( false === t.userAgent )
 				return false;
+
+			if ( t.userAgent.indexOf('ipad') != -1 )
+				return false;
+
+			if ( t.userAgent.indexOf('twitter for iphone') != -1 )
+				return true;
+
+			return false;
+		},
+		
+		/**
+		 * Detects if the current UA is Twitter for iPad
+		 * 
+		 * Old version 4.X - Mozilla/5.0 (iPad; U; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Mobile/8L1 Twitter for iPad
+		 * Ver 5.0 or Higher - Mozilla/5.0 (iPad; CPU OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 Twitter for iPhone 
+		 */
+		isTwitterForIpad : function() {
+			var t = this;
 			
-			if ( t.userAgent.indexOf('fennec') != -1 )
+			if ( false === t.userAgent )
+				return false;
+
+			if ( t.userAgent.indexOf('twitter for ipad') != -1 )
+				return true;
+
+			if ( t.userAgent.indexOf('ipad') != -1 && t.userAgent.indexOf('twitter for iphone') != -1  )
+				return true;
+
+			return false;
+		},
+		
+		
+		/**
+		 *  Detects if the current UA is WordPress for iOS
+		 */
+		isWordPressForIos : function() {
+			var t = this;
+			
+			if ( false === t.userAgent )
+				return false;
+
+			if ( t.userAgent.indexOf('wp-iphone') != -1 )
 				return true;
 
 			return false;
