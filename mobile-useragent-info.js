@@ -152,6 +152,40 @@ var wpcom_mobile_user_agent_info = {
 			return t.matchedPlatformName;
 		},
 		
+		/**
+		 * Detect the blackBerry OS version.
+		 * 
+		 * Note: This is for smartphones only. Do not work on BB tablets.
+		 *
+		 */
+		getBlackBerryOSVersion : function() {
+			var t = this;
+			
+			if ( false === t.userAgent )
+				return false;
+			
+			if( t.isBlackberry10() )
+				return '10';
+			
+			if( t.userAgent.indexOf('blackberry') == -1)
+				return false;
+			
+			var rv = -1; // Return value assumes failure.
+			if ( t.userAgent.indexOf('webkit') != -1 ) { //detecting the BB OS version for devices running OS 6.0 or higher
+				var re  = new RegExp(/Version\/([\d\.]+)/i);
+			} else {
+				//blackberry devices <= 5.XX
+				//BlackBerry9000/5.0.0.93 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/179
+				var re  = new RegExp(/BlackBerry\w+\/([\d\.]+)/i);
+			}
+			if (re.exec(t.userAgent) != null)
+				rv =  RegExp.$1.toString();
+			
+			if( -1 == rv )
+				return false;
+			
+			return rv;
+		},
 		
 		/**
 		 * Detects if the current UA is iPhone Mobile Safari or another iPhone or iPod Touch Browser.
